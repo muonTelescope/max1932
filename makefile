@@ -1,23 +1,18 @@
 CXX = g++
-CXXFLAGS = -std=c++11
+CXXFLAGS = -std=c++11 -I.
 LDLIBS = -lwiringPi
 
-HEADERS = #Components/Headers/RumPi.h ./Common.h Components/Headers/Component.h \
-#    Components/Headers/Vehicle.h Components/Headers/Motor.h Components/Headers/Receiver.h \
-#    Components/Headers/DualLED.h Components/Headers/LED.h Components/Headers/RGBLED.h \
-#    Components/Headers/Relay.h 
-OBJECTS = max1932.o 
+HEADERS = max1932.h
+OBJECTS = main.o max1932.o
 
-default: max1932
+default: main
 
-max1932: $(OBJECTS)
-	$(CXX) $(CXXFLAGS) $^ $(LDLIBS) -o $@
+main: $(OBJECTS)
+		$(CXX) -o $@ $(LDLIBS) $^
 
 %.o: ./%.cpp
-	$(CXX) $(CXXFLAGS) -c -o $@ $<
-
-$(OBJECTS): $(HEADERS)
+		$(CXX) -c $< $(CXXFLAGS)
 
 clean:
-	-rm -f $(OBJECTS)
-	-rm -f max1932
+		-rm -f $(OBJECTS)
+		-rm -f main
