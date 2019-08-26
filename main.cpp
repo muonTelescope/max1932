@@ -20,7 +20,7 @@ int main (int argc, char** argv){
   unsigned char data = (char)strtol(argv[1], NULL, 16);;
   printf("%d\n", (int)data);
 
-  MAX1932 *hv = new MAX1932(CS_PIN, SPI_CHANNEL);
+  MAX1932 *hv = new MAX1932(CS_PIN, SPI_CHANNEL, 95400, 2064, 2317);
   printf("%g V\n", hv->setByte(data) / 1000.0);
 
   return 0;

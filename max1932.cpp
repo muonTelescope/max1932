@@ -67,7 +67,6 @@ void MAX1932::setup(uint8_t CS_PIN, uint8_t SPI_CHANNEL){
   pinMode(_CS_PIN, OUTPUT);
   digitalWrite(_CS_PIN,  HIGH);
   delay(5);
-  //return wiringPiSPISetupMode(_SPI_CHANNEL, 1000000, 0) == -1 ? true : false;
 }
 
 void MAX1932::write(uint8_t val){
